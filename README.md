@@ -11,7 +11,18 @@
 
 Стек: HTML, SCSS, TS, Webpack
 
-Структура проекта:
+
+### Структура данных:
+Проект использует следующие типы данных:
+
+IProductItem: Данные о продукте, включая id, описание, изображение, название, категорию и цену.
+IOrder, IOrderResult: Данные о заказе и результате его отправки на сервер.
+IAdressForm, IContactsForm: Данные из формы доставки и контактов.
+FormErrors: Ошибки валидации форм.
+Использование компонентов
+Проект состоит из компонентов, таких как Page, Modal, Card, Basket, DeliveryForm, ContactForm, Success и других, каждый из которых выполняет определенную функцию в интерфейсе магазина.
+
+### Структура проекта:
 - src/ — исходные файлы проекта
 - src/components/ — папка с JS компонентами
 - src/components/base/ — папка с базовым кодом
@@ -241,7 +252,7 @@ trigger: Создает триггер-коллбэк для события.
 - order (объект данных о заказе)
 - formErrors (объект с ошибками форм)
 
-### методы
+### Методы
 - setCatalog (формирует каталог продуктов, инициализирует событие изменения каталога)
 - clearBasket (очищает корзину)
 - clearOrder (очищает данные заказа)
@@ -263,7 +274,7 @@ trigger: Создает триггер-коллбэк для события.
 ```
 constructor(blockName: string, container: HTMLElement, actions?: ICardActions) /*Инициализирует элементы карточки и устанавливает обработчики событий для кнопки*/
 ```
-### методы
+### Методы
 - set/get id (управляет идентификатором карточки)
 - set/get title (управляет названием товара)
 - set image (устанавливает изображение товара)
@@ -278,7 +289,7 @@ constructor(blockName: string, container: HTMLElement, actions?: ICardActions) /
 ```
 constructor(container: HTMLElement, events: EventEmitter) /*инициализирует элементы управления корзины и подписывается на события*/
 ```
-### методы:
+### Методы
 - set items (устанавливает товары в корзине)
 - set/get total (устанавливает и отображает общую стоимость товаров в корзине)
 - toggleButton (управляет кнопкой оформления заказа в корзине)
@@ -288,7 +299,7 @@ constructor(container: HTMLElement, events: EventEmitter) /*инициализи
 ```
 constructor(protected blockName: string, container: HTMLElement, actions?: IitemProductBasketAction)
 ```
-### методы
+### Методы
 - set index (устанавливает порядковый номер товара в корзине)
 - set title (устанавливает название товара в корзине)
 - set price (устанавливает стоимость товара в корзине)
@@ -298,7 +309,7 @@ constructor(protected blockName: string, container: HTMLElement, actions?: Iitem
 ```
 constructor(container: HTMLFormElement, events: IEvents)
 ```
-### методы
+### Методы
 - onInputChange (обработчик полей форм)
 - set valid (управляет кнопкой отправки формы в зависимости от валидации)
 - set errors (устанавливает ошибки валидации формы)
@@ -309,7 +320,7 @@ constructor(container: HTMLFormElement, events: IEvents)
 ```
 constructor(container: HTMLFormElement, events: IEvents, actions?: IFormActions) 
 ```
-### методы
+### Методы
 - set address (устанавливает адрес доставки)
 - clearClassButtons (сбрасывает активный класс кнопок оплаты)
 - choosePayment (управляет методом оплаты товара)
@@ -319,7 +330,7 @@ constructor(container: HTMLFormElement, events: IEvents, actions?: IFormActions)
 ```
 constructor(container: HTMLFormElement, events: IEvents) 
 ```
-### методы
+### Методы
 - set email (устанавливает адрес электронной почты)
 - set phone (устанавливает номер телефона)
 
@@ -329,7 +340,7 @@ constructor(container: HTMLFormElement, events: IEvents)
 ```
 constructor(container: HTMLElement)
 ```
-### методы
+### Методы
 - toggleClass (переключить класс)
 - setText (установить текстовое содержимое)
 - setDisabled (сменить статус блокировки)
@@ -343,7 +354,7 @@ constructor(container: HTMLElement)
 ```
 constructor(container: HTMLElement, actions?: ISuccessActions)
 ```
-### методы
+### Методы
 - set total (устанавливает стоимость покупки)
 
 ## Описание событий.
@@ -359,13 +370,3 @@ constructor(container: HTMLElement, actions?: ISuccessActions)
 - contacts:submit (отправка формы всего заказа)
 - formErrorsDelivery:change (изменение валидации доставки)
 - formErrorsContacts:change (изменение валидации контактов)
-
-### Структура данных
-Проект использует следующие типы данных:
-
-IProductItem: Данные о продукте, включая id, описание, изображение, название, категорию и цену.
-IOrder, IOrderResult: Данные о заказе и результате его отправки на сервер.
-IAdressForm, IContactsForm: Данные из формы доставки и контактов.
-FormErrors: Ошибки валидации форм.
-Использование компонентов
-Проект состоит из компонентов, таких как Page, Modal, Card, Basket, DeliveryForm, ContactForm, Success и других, каждый из которых выполняет определенную функцию в интерфейсе магазина.

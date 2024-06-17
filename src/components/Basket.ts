@@ -1,6 +1,6 @@
-import { Component } from "../base/Component";
-import { ensureElement, createElement, formatNumber } from "../../utils/utils";
-import { EventEmitter } from "../base/events";
+import { Component } from "./base/Component";
+import { ensureElement, createElement, formatNumber } from "../utils/utils";
+import { EventEmitter } from "./base/Events";
 
 interface IBasketView {
     items: HTMLElement[];
@@ -87,14 +87,14 @@ export class itemProductBasket extends Component<IitemProductBasket>  {
     }
 
     set index(value: number) {
-        this._index.textContent = value.toString();
+        this.setText(this._index, value.toString());
     }
     
     set title(value: string) {
-        this._title.textContent = value;
+        this.setText(this._title, value);
     }
     
     set price(value: number) {
-        this._price.textContent = formatNumber(value) + ' синапсов';
+        this.setText(this._price, formatNumber(value) + ' синапсов');
     }
 }

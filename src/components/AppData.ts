@@ -1,6 +1,6 @@
 import { Model } from "./base/Model";
 import { IAppState, IProductItem, IOrder, FormErrors, IAdressForm, IContactsForm } from "../types";
-import { IEvents } from "./base/events";
+import { IEvents } from "./base/Events";
 
 export type CatalogChangeEvent = {
     catalog: IProductItem[]

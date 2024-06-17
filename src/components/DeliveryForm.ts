@@ -1,7 +1,7 @@
-import { IAdressForm,  } from "../../types";
-import { IEvents } from "../base/events";
-import { Form } from "./Form";
-import { ensureElement, ensureAllElements } from "../../utils/utils";
+import { IAdressForm,  } from "../types";
+import { IEvents } from "./base/Events";
+import { Form } from "./common/Form";
+import { ensureElement, ensureAllElements } from "../utils/utils";
 
 interface IFormActions {
     onClick: (button: string) => void;

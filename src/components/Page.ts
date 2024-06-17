@@ -1,6 +1,6 @@
 import {Component} from "./base/Component";
 import {ensureElement} from "../utils/utils";
-import {IEvents} from "./base/events";
+import {IEvents} from "./base/Events";
 
 //тип данных для отображения страницы
 interface IPage {
@@ -28,22 +28,18 @@ export class Page extends Component<IPage> {
         });
     }
 
-    //обновляет счетчик товаров в корзине
+    // обновляет счетчик товаров в корзине
     set counter(value: number) {
         this.setText(this._counter, String(value));
     }
     
-    //отображает каталог товаров
+    // отображает каталог товаров
     set catalog(items: HTMLElement[]) {
         this._catalog.replaceChildren(...items);
     }
 
-    //блокирует взаимодействие со страницей при открытии модального окна
+    // блокирует взаимодействие со страницей при открытии модального окна
     set locked(value: boolean) {
-        if (value) {
-            this._wrapper.classList.add('page__wrapper_locked');
-        } else {
-            this._wrapper.classList.remove('page__wrapper_locked');
-        }
+        this.toggleClass(this._wrapper, 'page__wrapper_locked', value);
     }
 }

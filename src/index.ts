@@ -1,18 +1,17 @@
 import './scss/styles.scss';
-
-import { ProductsApi } from "./components/common/ProductsApi";
+import { ProductsApi } from "./components/ProductsApi";
 import { API_URL, CDN_URL } from "./utils/constants";
-import { EventEmitter } from "./components/base/events";
+import { EventEmitter } from "./components/base/Events";
 import { AppState, CatalogChangeEvent } from "./components/AppData";
 import { IProductItem } from './types';
 import { Page } from "./components/Page";
 import { Card } from "./components/Card";
 import { Modal } from "./components/common/Modal";
-import { Basket, itemProductBasket } from "./components/common/Basket";
-import { DeliveryForm } from './components/common/DeliveryForm';
-import { ContactForm } from './components/common/ContactForm';
+import { Basket, itemProductBasket } from "./components/Basket";
+import { DeliveryForm } from './components/DeliveryForm';
+import { ContactForm } from './components/ContactForm';
 
-import {Success} from './components/common/Success';
+import {Success} from './components/Success';
 import {cloneTemplate, createElement, ensureElement} from "./utils/utils";
 import {IAdressForm, IContactsForm} from './types';
 

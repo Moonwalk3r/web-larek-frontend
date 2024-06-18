@@ -1,4 +1,4 @@
-import { IAdressForm,  } from "../types";
+import { IAdressForm } from "../types";
 import { IEvents } from "./base/Events";
 import { Form } from "./common/Form";
 import { ensureElement, ensureAllElements } from "../utils/utils";
@@ -26,30 +26,37 @@ export class DeliveryForm extends Form<IDeliveryFormView> {
         this._paymentButtons.forEach(button => {
             button.addEventListener('click', (evt) => {
                 if (evt.target === this._cardButton) {
-                    this._cardButton.classList.add("button_alt-active");
-                    this._cashButton.classList.remove("button_alt-active");
-                    this.choosePayment('card')
-                } if (evt.target === this._cashButton) {
-                    this._cashButton.classList.add("button_alt-active");
-                    this._cardButton.classList.remove("button_alt-active");
-                    this.choosePayment('cash')    
+                    this.toggleCard(true);
+                    this.toggleCash(false);
+                    this.choosePayment('card');
+                } else if (evt.target === this._cashButton) {
+                    this.toggleCash(true);
+                    this.toggleCard(false);
+                    this.choosePayment('cash');   
                 }
             });
-        })
+        });
     }
 
     set address(value: string) {
-        (this.container.elements.namedItem('address') as HTMLInputElement).value = value;
-    };
+        this.setText(this.container.elements.namedItem('address') as HTMLInputElement, value);
+    }
 
-    clearClassButtons () {
+    clearClassButtons() {
         this._paymentButtons.forEach(button => {
-            button.classList.remove("button_alt-active");
-        })
-    };
+            this.toggleClass(button, "button_alt-active", false);
+        });
+    }
 
-    choosePayment (value: string) {
+    choosePayment(value: string) {
         this.events.emit('payment:change', { field: 'payment', value });
-    };
+    }
 
+    toggleCard(state: boolean = true) {
+        this.toggleClass(this._cardButton, 'button_alt-active', state);
+    }
+
+    toggleCash(state: boolean = true) {
+        this.toggleClass(this._cashButton, 'button_alt-active', state);
+    }
 }
